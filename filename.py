@@ -5,6 +5,7 @@ from direct.task import Task
 from direct.actor.Actor import Actor
 from direct.interval.IntervalGlobal import Sequence
 from panda3d.core import Point3
+from direct.gui.OnscreenText import OnscreenText
 
 
 class MyApp(ShowBase):
@@ -43,6 +44,12 @@ class MyApp(ShowBase):
         self.pandaPace = Sequence(posInterval1, hprInterval1, posInterval2, hprInterval2, name="pandaPace")
         self.pandaPace.loop()
 
+
+        textObject = OnscreenText(text='my text string', pos=(-0.5, 0.02), scale=1)
+        textObject.textNode.setCardColor(1, 1, 0.5, 0.5)
+        textObject.textNode.setCardAsMargin(0, 0, 0, 0)
+        textObject.textNode.setCardDecal(True)
+
     # Define a procedure to move the camera.
     def spinCameraTask(self, task):
         angleDegrees = task.time * 6.0
@@ -51,6 +58,6 @@ class MyApp(ShowBase):
         self.camera.setHpr(angleDegrees, 0, 0)
         return Task.cont
 
-
-app = MyApp()
-app.run()
+if __name__ == "__main__":
+    app = MyApp()
+    app.run()

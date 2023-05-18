@@ -37,7 +37,7 @@ setup(
 
             # Include the OpenGL renderer and OpenAL audio plug-in
             'plugins': [
-                'pandagl',
+                'pandagles2',
                 'p3openal_audio',
             ],
 

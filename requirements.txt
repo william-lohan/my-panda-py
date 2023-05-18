@@ -1,1 +1,3 @@
 panda3d~=1.10.9
+panda3d-blend2bam
+panda3d-gltf
