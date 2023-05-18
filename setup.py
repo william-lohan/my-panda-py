@@ -6,7 +6,7 @@ setup(
         'build_apps': {
             # Build asteroids.exe as a GUI application
             'gui_apps': {
-                'asteroids': 'main.py',
+                'main': 'main.py',
                 'mypanda': 'filename.py',
             },
 
