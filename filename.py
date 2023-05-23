@@ -51,7 +51,7 @@ class MyApp(ShowBase):
         textObject.textNode.setCardDecal(True)
 
     # Define a procedure to move the camera.
-    def spinCameraTask(self, task):
+    def spinCameraTask(self, task: Task):
         angleDegrees = task.time * 6.0
         angleRadians = angleDegrees * (pi / 180.0)
         self.camera.setPos(20 * sin(angleRadians), -20 * cos(angleRadians), 3)
