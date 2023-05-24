@@ -7,9 +7,20 @@ loadPrcFileData("", """
     show-frame-rate-meter true
     """)
 
+class Floor:
+    def __init__(self):
+        self.model = loader.loadModel("models/floor.gltf")
+        self.model.reparentTo(render)
 
+class Player:
+    def __init__(self):
+        self.actor = Actor("models/low_poly_cat.gltf")
+        self.actor.setScale(0.5)
+        self.actor.reparentTo(render)
+        self.actor.loop("WalkTrack")
 
-    
+        self.cameraTarget = self.actor.attachNewNode("cameraTarget")
+        self.cameraTarget.setPos(0, 0, 1.5)
 
 class MyApp(ShowBase):
     def __init__(self):
@@ -21,20 +32,14 @@ class MyApp(ShowBase):
         self.render.setShader(shader)
         self.render.setShaderInput("snapScale", 30)
 
-        self.floor = self.loader.loadModel("models/floor.glb")
-        self.floor.reparentTo(self.render)
+        self.floor = Floor()
 
-        self.sven = Actor("models/low_poly_cat.glb")
-        self.sven.setScale(0.5)
-        self.sven.reparentTo(self.render)
-        self.sven.loop("WalkTrack")
+        self.player = Player()
 
         # Set up the camera
-        self.cameraTarget = self.sven.attachNewNode("cameraTarget")
-        self.cameraTarget.setPos(0, 0, 1.5)
-        self.camera.reparentTo(self.cameraTarget)
+        self.camera.reparentTo(self.player.cameraTarget)
         self.camera.setPos(0, -10, 2)
-        self.camera.lookAt(self.cameraTarget)
+        self.camera.lookAt(self.player.cameraTarget)
 
 
 

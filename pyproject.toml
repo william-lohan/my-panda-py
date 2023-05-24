@@ -2,3 +2,4 @@
 [tool.pyright]
 reportGeneralTypeIssues = false
 reportOptionalMemberAccess = false
+reportUndefinedVariable = false
